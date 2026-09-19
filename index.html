@@ -1,0 +1,459 @@
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<meta content="#0b1e3f" name="theme-color"/>
+<meta content="أكاديمية خدومة للإنجليزية — منصة رسمية معتمدة بدروس لا نهائية وشهادات إتمام." name="description"/>
+<meta content="Khadouma English Academy,تعلم الإنجليزية,شهادة معتمدة" name="keywords"/>
+<meta content="Khadouma English Academy" property="og:title"/>
+<meta content="منصة تعليمية رسمية بشهادات معتمدة." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="manifest.json" rel="manifest"/>
+<link href="assets/icon-192.png" rel="apple-touch-icon"/>
+<link href="assets/icon.svg" rel="icon" type="image/svg+xml"/>
+<title>Khadouma English Academy | أكاديمية خدومة</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
+<!-- jsPDF يُحمَّل ديناميكياً عند إنشاء شهادة فقط (توفير ~96KB) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-HDHVSH42M5"></script></head>
+<body dir="rtl">
+<!-- ========== LANDING ========== -->
+<div class="screen active" id="landing-screen">
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="#" onclick="showLanding();return false;">
+<span class="brand-logo">🎓</span>
+<span class="brand-name">Khadouma <b>English</b> Academy</span>
+</a>
+<nav class="nav">
+<a data-i18n="nav.about" href="#about">من نحن</a>
+<a data-i18n="nav.features" href="#features">المميزات</a>
+<a data-i18n="nav.courses" href="#courses">المسارات</a>
+<a data-i18n="nav.verify" href="#verify">تحقق من شهادة</a>
+<a data-i18n="nav.contact" href="#contact">تواصل</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="lang-btn">EN</button>
+<button class="icon-btn" id="theme-btn-landing">🌙</button>
+<button class="btn btn-gold" data-i18n="nav.login" onclick="showLogin()">دخول المنصة</button>
+</div>
+</div>
+</header>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<span class="badge" data-i18n="hero.badge">✦ منصة تعليمية رسمية معتمدة</span>
+<h1 data-i18n="hero.title">أتقن الإنجليزية مع <span class="grad">أكاديمية خدومة</span></h1>
+<p data-i18n="hero.sub">دروس تفاعلية لا نهائية • وحدات متدرجة A1→C2 • اختبارات ذكية • شهادات PDF معتمدة عند إتمام كل وحدة ومستوى.</p>
+<div class="hero-cta">
+<button class="btn btn-gold btn-lg" data-i18n="hero.cta" onclick="showLogin()">ابدأ الآن</button>
+<a class="btn btn-ghost btn-lg" data-i18n="hero.cta2" href="#features">اكتشف المميزات</a>
+</div>
+<div class="hero-stats">
+<div><b id="stat-stu">+6</b><span data-i18n="stats.stu">طالب</span></div>
+<div><b id="stat-les">+4</b><span data-i18n="stats.les">درس</span></div>
+<div><b id="stat-cert">+8</b><span data-i18n="stats.cert">شهادة</span></div>
+</div>
+</div>
+<div class="hero-art">
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="glass-card">
+<div class="gc-row"><span>📘</span><div><b>Module A1-1</b><small>Present Simple</small></div><span class="pill ok">✓</span></div>
+<div class="gc-row"><span>🎤</span><div><b>Speaking Practice</b><small>Recording</small></div><span class="pill warn">●</span></div>
+<div class="gc-row"><span>🏆</span><div><b>Certificate</b><small>Level A1</small></div><span class="pill gold">PDF</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="about">
+<div class="container narrow center">
+<h2 class="section-title" data-i18n="about.title">من نحن</h2>
+<p class="section-lead" data-i18n="about.lead">أكاديمية خدومة منصة رقمية متخصصة في تعليم اللغة الإنجليزية بمنهج لا نهائي ومتجدّد من الصفر إلى الإتقان، مع متابعة فردية، نظام تقييم شفاف، وشهادات معتمدة عند إتمام كل وحدة ومستوى.</p>
+<div class="grid-3">
+<div class="card"><div class="ico">🎯</div><h3 data-i18n="about.m">رسالتنا</h3><p data-i18n="about.mt">تمكين كل طالب من التحدث بثقة.</p></div>
+<div class="card"><div class="ico">🧭</div><h3 data-i18n="about.v">رؤيتنا</h3><p data-i18n="about.vt">الأكاديمية الأولى عربيًا في التعليم التفاعلي.</p></div>
+<div class="card"><div class="ico">💎</div><h3 data-i18n="about.va">قيمنا</h3><p data-i18n="about.vat">الجودة • الشفافية • الالتزام • الاحترام.</p></div>
+</div>
+</div>
+</section>
+<section class="section alt" id="features">
+<div class="container">
+<h2 class="section-title" data-i18n="feat.title">لماذا أكاديمية خدومة؟</h2>
+<div class="grid-3">
+<div class="card"><div class="ico">♾️</div><h3 data-i18n="feat.1t">دروس لا نهائية</h3><p data-i18n="feat.1d">منهج متجدّد باستمرار — يتوسّع بلا حدود.</p></div>
+<div class="card"><div class="ico">🧩</div><h3 data-i18n="feat.2t">وحدات ومستويات</h3><p data-i18n="feat.2d">A1 → C2 مع تدرّج منطقي واضح.</p></div>
+<div class="card"><div class="ico">🧠</div><h3 data-i18n="feat.3t">اختبارات ذكية</h3><p data-i18n="feat.3d">تقييم فوري وتحليل دقيق للأخطاء.</p></div>
+<div class="card"><div class="ico">🛡️</div><h3 data-i18n="feat.4t">مضاد للغش</h3><p data-i18n="feat.4d">مراقبة التبويب والصوت والاختصارات.</p></div>
+<div class="card"><div class="ico">📜</div><h3 data-i18n="feat.5t">شهادات ديناميكية</h3><p data-i18n="feat.5d">لكل وحدة ولكل مستوى ولكل معلم (25/50/100...).</p></div>
+<div class="card"><div class="ico">🔥</div><h3 data-i18n="feat.6t">Streak يومي</h3><p data-i18n="feat.6d">مكافآت للأيام المتتالية ولوحة صدارة أسبوعية.</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="courses">
+<div class="container">
+<h2 class="section-title" data-i18n="crs.title">المسارات والمستويات</h2>
+<div class="grid-3">
+<div class="card center"><h3 data-i18n="crs.a1">A1 — مبتدئ</h3><div class="price" data-i18n="crs.a1.free">مجانًا</div><ul class="check"><li data-i18n="crs.a1.1">النطق الأساسي</li><li data-i18n="crs.a1.2">مفردات يومية</li><li data-i18n="crs.a1.3">جمل بسيطة</li></ul></div>
+<div class="card center"><h3 data-i18n="crs.a2">A2 — أساسي</h3><div class="price" data-i18n="crs.a1.free">مجانًا</div><ul class="check"><li data-i18n="crs.a2.1">زمن المضارع والماضي</li><li data-i18n="crs.a2.2">حوارات قصيرة</li><li data-i18n="crs.a2.3">وصف الأشياء</li></ul></div>
+<div class="card center"><h3 data-i18n="crs.b1">B1 — متوسط</h3><div class="price" data-i18n="crs.b1.price">$19</div><ul class="check"><li data-i18n="crs.b1.1">قواعد متوسطة</li><li data-i18n="crs.b1.2">محادثات حقيقية</li><li data-i18n="crs.b1.3">كتابة فقرات</li></ul></div>
+<div class="card center"><h3 data-i18n="crs.b2">B2 — فوق متوسط</h3><div class="price" data-i18n="crs.b2.price">$29</div><ul class="check"><li data-i18n="crs.b2.1">طلاقة متقدمة</li><li data-i18n="crs.b2.2">نقاشات معقدة</li><li data-i18n="crs.b2.3">كتابة مقالات</li></ul></div>
+<div class="card center"><h3 data-i18n="crs.c1">C1 — متقدم</h3><div class="price" data-i18n="crs.c1.price">$39</div><ul class="check"><li data-i18n="crs.c1.1">لغة أكاديمية</li><li data-i18n="crs.c1.2">مصطلحات احترافية</li><li data-i18n="crs.c1.3">تحضير IELTS/TOEFL</li></ul></div>
+<div class="card center"><h3 data-i18n="crs.c2">C2 — إتقان</h3><div class="price" data-i18n="crs.c2.price">$49</div><ul class="check"><li data-i18n="crs.c2.1">إتقان كامل</li><li data-i18n="crs.c2.2">أسلوب أدبي</li><li data-i18n="crs.c2.3">خطابة</li></ul></div>
+</div>
+</div>
+</section>
+<section class="section alt" id="verify">
+<div class="container narrow">
+<h2 class="section-title" data-i18n="verify.title">التحقق من شهادة</h2>
+<p class="section-lead" data-i18n="verify.lead">أدخل رقم الشهادة (مثل: KEA-XXXXXX) للتحقق من صحتها.</p>
+<form class="contact-form" id="verify-form" onsubmit="event.preventDefault();verifyCertificate();">
+<input id="verify-input" placeholder="KEA-XXXXXX" required="" type="text"/>
+<button class="btn btn-primary" data-i18n="verify.btn" type="submit">تحقق</button>
+</form>
+<div id="verify-result" style="margin-top:16px"></div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="container narrow">
+<h2 class="section-title" data-i18n="cont.title">تواصل معنا</h2>
+<div class="contact-info">
+<a href="mailto:abdoukhadouma10@gmail.com">📧 abdoukhadouma10@gmail.com</a>
+<a href="https://wa.me/213673118001" rel="noopener" target="_blank">💬 WhatsApp: 0673118001</a>
+</div>
+</div>
+</section>
+<footer class="site-footer">
+<div class="container footer-grid">
+<div>
+<div class="brand"><span class="brand-logo">🎓</span><span class="brand-name">Khadouma English Academy</span></div>
+<p data-i18n="foot.tag">تعلّم الإنجليزية باحترافية، واحصل على شهادة معتمدة.</p>
+</div>
+<div>
+<h4 data-i18n="foot.legal">قانوني</h4>
+<a data-i18n="foot.terms" href="terms.html">شروط الاستخدام</a>
+<a data-i18n="foot.priv" href="privacy.html">سياسة الخصوصية</a>
+<a data-i18n="foot.ac" href="anti-cheat.html">سياسة منع الغش</a>
+</div>
+<div>
+<h4 data-i18n="foot.links">روابط</h4>
+<a data-i18n="foot.portal" href="#" onclick="showLogin();return false;">منصة الطالب</a>
+<a data-i18n="nav.about" href="#about">من نحن</a>
+</div>
+</div>
+<div class="footer-bottom container">© <span id="year">2026</span> Khadouma English Academy — <span data-i18n="foot.rights">جميع الحقوق محفوظة</span></div>
+</footer>
+</div>
+<!-- ========== LOGIN ========== -->
+<div class="screen" id="login-screen">
+<button class="back-btn" onclick="showLanding()">←</button>
+<button class="theme-btn" id="theme-btn">🌙</button>
+<div class="login-card">
+<div class="logo-icon">🎓</div>
+<h1>Khadouma English Academy</h1>
+<p class="subtitle" data-i18n="login.sub">نظام تعليمي رسمي من الصفر إلى الاحتراف</p>
+<div class="login-tabs">
+<button class="tab active" data-i18n="login.stu" data-tab="student" type="button">طالب</button>
+<button class="tab" data-i18n="login.sup" data-tab="supervisor" type="button">مشرف</button>
+</div>
+<form id="student-form">
+<div class="form-group"><label data-i18n="login.code">أدخل رمزك التعليمي</label>
+<input autocomplete="off" id="student-code" placeholder="STU-XXXX-00" required="" type="password"/></div>
+<button class="btn btn-primary" data-i18n="login.enter" type="submit">دخول إلى صفحتي</button>
+</form>
+<form class="hidden" id="supervisor-form">
+<div class="form-group"><label data-i18n="login.supcode">أدخل رمز الإشراف</label>
+<input autocomplete="off" id="supervisor-code" placeholder="SUPER-XXXX" required="" type="password"/></div>
+<button class="btn btn-primary" data-i18n="login.supenter" type="submit">دخول لوحة الإشراف</button>
+</form>
+<p class="hint" data-i18n="login.hint">الرموز سرية — اطلبها من المشرف العام.</p>
+<p class="hint" style="margin-top:8px"><a data-i18n="login.terms" href="terms.html" style="color:var(--p)">شروط الاستخدام</a> • <a data-i18n="login.privacy" href="privacy.html" style="color:var(--p)">الخصوصية</a></p>
+</div>
+</div>
+<!-- ========== SUPERVISOR ========== -->
+<div class="screen" id="supervisor-screen">
+<header class="topbar">
+<div><h2 data-i18n="sup.title" id="sup-name">المشرف</h2><p class="muted" id="sup-role"></p></div>
+<div class="row">
+<button class="btn btn-ghost icon-only" id="lang-btn-sup">🌐</button>
+<button class="btn btn-ghost" data-i18n="sup.logout" id="btn-logout-sup">خروج</button>
+</div>
+</header>
+<main class="wrap">
+<div class="admin-tabs">
+<button class="admin-tab active" data-i18n="sup.overview" data-panel="overview">نظرة عامة</button>
+<button class="admin-tab" data-i18n="sup.modules" data-panel="modules">الوحدات</button>
+<button class="admin-tab" data-i18n="sup.lessons" data-panel="lessons">الدروس</button>
+<button class="admin-tab" data-i18n="sup.students" data-panel="students">الطلاب</button>
+<button class="admin-tab" data-i18n="sup.analytics" data-panel="analytics">تحليلات</button>
+<button class="admin-tab" data-i18n="sup.posts" data-panel="posts">منشورات</button>
+<button class="admin-tab" data-i18n="sup.reports" data-panel="reports">تقارير</button>
+<button class="admin-tab" data-i18n="sup.notifications" data-panel="notifs">إشعارات</button>
+</div>
+<div class="admin-panel" id="admin-overview">
+<div class="stats" id="sup-stats"></div>
+<h3 class="h3" data-i18n="sup.totalPoints">لوحة النقاط الكلية</h3>
+<div class="board card" id="leaderboard"></div>
+<h3 class="h3" data-i18n="sup.weeklyLeaderboard">لوحة الصدارة الأسبوعية</h3>
+<div class="board card" id="weekly-board"></div>
+<h3 class="h3" data-i18n="sup.studentsActivity">الطلاب ونشاطهم</h3>
+<div class="grid" id="sup-students"></div>
+</div>
+<div class="admin-panel hidden" id="admin-modules">
+<div class="card">
+<h3 data-i18n="sup.addModule">إضافة وحدة جديدة</h3>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.moduleTitleAr">عنوان الوحدة (عربي)</label><input id="mod-title"/></div>
+<div class="form-group"><label data-i18n="sup.moduleTitleEn">Module Title (EN)</label><input id="mod-titleEn"/></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.level">المستوى</label>
+<select id="mod-level">
+<option>A1</option><option>A2</option><option>B1</option>
+<option>B2</option><option>C1</option><option>C2</option>
+</select>
+</div>
+<div class="form-group"><label data-i18n="sup.order">الترتيب</label><input id="mod-order" type="number" value="1"/></div>
+</div>
+<button class="btn btn-primary" data-i18n="sup.add" id="btn-add-module" style="width:auto">إضافة</button>
+</div>
+<h3 class="h3" data-i18n="sup.currentModules">الوحدات الحالية</h3>
+<div id="admin-modules-list"></div>
+</div>
+<div class="admin-panel hidden" id="admin-lessons">
+<div class="row">
+<button class="btn btn-primary" data-i18n="sup.newLesson" id="btn-add-lesson" style="width:auto">+ درس جديد</button>
+<button class="btn btn-sec" data-i18n="sup.importJson" id="btn-bulk-import" style="width:auto">📥 استيراد JSON</button>
+</div>
+<input accept=".json" id="bulk-file" style="display:none" type="file"/>
+<div id="admin-lessons-list"></div>
+<div class="card hidden" id="lesson-editor" style="margin-top:20px">
+<h3 data-i18n="sup.newLessonTitle" id="editor-title">درس جديد</h3>
+<input id="les-edit-id" type="hidden"/>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.lessonTitleAr">عنوان (عربي)</label><input id="les-edit-title"/></div>
+<div class="form-group"><label data-i18n="sup.lessonTitleEn">Title (EN)</label><input id="les-edit-titleEn"/></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.module">الوحدة</label><select id="les-edit-module"></select></div>
+<div class="form-group"><label data-i18n="sup.level">المستوى</label><select id="les-edit-level">
+<option>A1</option><option>A2</option><option>B1</option>
+<option>B2</option><option>C1</option><option>C2</option>
+</select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.orderInModule">الترتيب في الوحدة</label><input id="les-edit-order" type="number" value="1"/></div>
+<div class="form-group"><label data-i18n="sup.deadline">آخر أجل</label><input id="les-edit-deadline" type="date"/></div>
+</div>
+<div class="form-group"><label data-i18n="sup.goal">الهدف</label><input id="les-edit-goal"/></div>
+<div class="form-group"><label data-i18n="sup.videoTextEn">نص الفيديو (EN)</label><input id="les-edit-videoText"/></div>
+<div class="form-group"><label data-i18n="sup.arTranslation">الترجمة العربية</label><input id="les-edit-videoArabic"/></div>
+<div class="form-group"><label data-i18n="sup.youtubeVideos">فيديوهات يوتيوب (ID|عنوان) سطر لكل</label><textarea id="les-edit-videos" rows="3"></textarea></div>
+<div class="form-group"><label data-i18n="sup.listenSentence">جملة الاستماع</label><input id="les-edit-listen"/></div>
+<div class="form-group"><label data-i18n="sup.listenTranslation">ترجمة الاستماع</label><input id="les-edit-listenAr"/></div>
+<div class="form-group"><label data-i18n="sup.exercises">تمارين (سطر لكل عنصر)</label><textarea id="les-edit-practice" rows="3"></textarea></div>
+<div class="form-group"><label data-i18n="sup.quizJson">الاختبار JSON</label><textarea id="les-edit-quiz" rows="8" style="font-family:monospace;font-size:.85rem"></textarea></div>
+<div class="form-group"><label data-i18n="sup.targets">المستهدفون (all أو ids)</label><input id="les-edit-targets" value="all"/></div>
+<div class="form-group"><label data-i18n="sup.post"><input checked="" id="les-edit-published" type="checkbox"/> منشور</label></div>
+<div class="row">
+<button class="btn btn-primary" data-i18n="sup.savePublish" id="btn-save-lesson" style="width:auto">حفظ ونشر</button>
+<button class="btn btn-ghost" data-i18n="sup.cancel" id="btn-cancel-lesson" style="width:auto">إلغاء</button>
+</div>
+</div>
+</div>
+<div class="admin-panel hidden" id="admin-students">
+<div class="card">
+<h3 data-i18n="sup.addStudent">إضافة طالب</h3>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.name">الاسم</label><input id="new-stu-name"/></div>
+<div class="form-group"><label data-i18n="sup.code">الرمز</label><input id="new-stu-code" placeholder="STU-XXX-00"/></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.age">العمر</label><input id="new-stu-age" type="number" value="8"/></div>
+<div class="form-group"><label data-i18n="sup.kidsMode"><input id="new-stu-kids" type="checkbox"/> وضع الأطفال</label></div>
+</div>
+<button class="btn btn-primary" data-i18n="sup.add" id="btn-add-student" style="width:auto">إضافة</button>
+</div>
+<h3 class="h3" data-i18n="sup.studentList">قائمة الطلاب</h3>
+<div id="admin-students-list"></div>
+</div>
+<div class="admin-panel hidden" id="admin-analytics">
+<div class="form-group" style="max-width:320px">
+<label data-i18n="sup.selectStudent">اختر طالباً</label>
+<select id="analytics-student-select"></select>
+</div>
+<div class="card" id="analytics-detail"></div>
+</div>
+<div class="admin-panel hidden" id="admin-posts">
+<div class="card">
+<h3 data-i18n="sup.publishPost">نشر منشور</h3>
+<div class="form-group"><label data-i18n="sup.postTitle">العنوان</label><input id="post-title"/></div>
+<div class="form-group"><label data-i18n="sup.postContent">المحتوى</label><textarea id="post-body" rows="4"></textarea></div>
+<div class="form-row">
+<div class="form-group"><label data-i18n="sup.type">النوع</label>
+<select id="post-type">
+<option data-i18n="sup.news" value="news">خبر</option>
+<option data-i18n="sup.instruction" value="instruction">تعليمات</option>
+<option data-i18n="sup.announcement" value="announcement">إعلان</option>
+</select>
+</div>
+<div class="form-group"><label data-i18n="sup.notifyStudents"><input checked="" id="post-notify" type="checkbox"/> إشعار الطلاب</label></div>
+</div>
+<button class="btn btn-primary" data-i18n="sup.publish" id="btn-publish-post" style="width:auto">نشر</button>
+</div>
+<h3 class="h3" data-i18n="sup.previousPosts">المنشورات السابقة</h3>
+<div id="admin-posts-list"></div>
+</div>
+<div class="admin-panel hidden" id="admin-reports">
+<button class="btn btn-sec" data-i18n="sup.exportPdf" id="btn-export-pdf" style="width:auto;margin-bottom:12px">📄 تصدير PDF</button>
+<div id="reports-box"></div>
+</div>
+<div class="admin-panel hidden" id="admin-notifs">
+<div id="sup-notifs-list"></div>
+</div>
+</main>
+</div>
+<!-- ========== STUDENT ========== -->
+<div class="screen" id="student-screen">
+<header class="topbar student-top" id="student-top">
+<button class="btn btn-ghost" data-i18n="sup.logout" id="btn-logout-stu">خروج</button>
+<div class="who">
+<span class="av" id="stu-avatar">🧒</span>
+<div><h2 id="stu-name">—</h2><p class="muted" id="stu-meta"></p></div>
+</div>
+<div class="pts">
+<span id="stu-points">0</span><small data-i18n="stu.points">نقطة</small>
+<div class="streak" id="stu-streak" title="أيام متتالية">🔥 0</div>
+<button class="notif-bell" id="btn-stu-notifs">🔔 <span class="badge" id="stu-notif-count" style="display:none">0</span></button>
+</div>
+</header>
+<main class="wrap">
+<div class="stu-tabs">
+<button class="stu-tab active" data-i18n="stu.myPath" data-stu="path">مساري</button>
+<button class="stu-tab" data-i18n="stu.posts" data-stu="posts">المنشورات</button>
+<button class="stu-tab" data-i18n="stu.notifications" data-stu="notifs">إشعاراتي</button>
+<button class="stu-tab" data-i18n="stu.performance" data-stu="myperf">أدائي</button>
+<button class="stu-tab" data-i18n="stu.certificates" data-stu="certificates">🏆 شهاداتي</button>
+</div>
+<div id="stu-panel-path">
+<div class="card info-card">
+<h3 data-i18n="stu.pathTitle">مسارك التعليمي اللامحدود</h3>
+<p data-i18n="stu.pathDesc">الدروس تُضاف باستمرار. أكمل بالترتيب، واحصل على شهادة عند إتمام كل وحدة ومستوى.</p>
+<div class="bar"><div class="fill" id="stu-bar" style="width:0%"></div></div>
+<p class="muted" id="stu-progress-text">0 دروس</p>
+<div id="stu-badges" style="margin-top:8px"></div>
+</div>
+<div class="card mini" id="mini-rank"></div>
+<div class="lesson-tools">
+<input id="lesson-search" placeholder="🔍 ابحث عن درس..." type="text"/>
+<select id="lesson-filter-level">
+<option data-i18n="stu.allLevels" value="">كل المستويات</option>
+<option>A1</option><option>A2</option><option>B1</option>
+<option>B2</option><option>C1</option><option>C2</option>
+</select>
+<select id="lesson-filter-status">
+<option data-i18n="stu.allStatuses" value="">كل الحالات</option>
+<option data-i18n="stu.incomplete" value="todo">غير مكتمل</option>
+<option data-i18n="stu.completed" value="done">مكتمل</option>
+</select>
+</div>
+<div class="lessons" id="lessons"></div>
+</div>
+<div class="hidden" id="stu-panel-posts">
+<h3 class="h3" data-i18n="stu.newsTitle">أخبار وتعليمات</h3>
+<div id="stu-posts-list"></div>
+</div>
+<div class="hidden" id="stu-panel-notifs">
+<div class="row" style="margin-bottom:12px">
+<button class="btn btn-sec" data-i18n="stu.markAllRead" id="btn-mark-all-read" style="width:auto">تعليم الكل كمقروء</button>
+</div>
+<div id="stu-notifs-list"></div>
+</div>
+<div class="hidden" id="stu-panel-myperf">
+<div class="card" id="stu-myperf-box"></div>
+</div>
+<div class="hidden" id="stu-panel-certificates">
+<h3 class="h3" data-i18n="stu.certificatesTitle">🏆 شهادات الإتمام</h3>
+<div id="stu-certificates-box"></div>
+</div>
+</main>
+</div>
+<!-- ========== LESSON PLAYER ========== -->
+<div class="screen" id="lesson-screen">
+<header class="topbar dark">
+<button class="btn btn-ghost" data-i18n="stu.backToLessons" id="btn-back-lessons">→ دروسي</button>
+<h2 data-i18n="lesson.title" id="les-title" style="font-size:1rem;flex:1;text-align:center">الدرس</h2>
+<span class="step" id="les-step">1/5</span>
+</header>
+<div class="steps-bar" id="steps-bar">
+<div class="step-item" id="step-dot-0"><div class="dot">1</div><span class="lbl" data-i18n="lesson.watch">شاهد</span></div>
+<div class="step-item" id="step-dot-1"><div class="dot">2</div><span class="lbl" data-i18n="lesson.record">سجّل</span></div>
+<div class="step-item" id="step-dot-2"><div class="dot">3</div><span class="lbl" data-i18n="lesson.practice">تدرب</span></div>
+<div class="step-item" id="step-dot-3"><div class="dot">4</div><span class="lbl" data-i18n="lesson.docs">مستندات</span></div>
+<div class="step-item" id="step-dot-4"><div class="dot">5</div><span class="lbl" data-i18n="lesson.quiz">اختبار</span></div>
+</div>
+<main class="wrap narrow">
+<div class="shield" data-i18n="lesson.antiCheat" id="shield-msg">🛡️ منع الغش نشط: مشاهدة + صوت + مؤقت + مراقبة التبويب</div>
+<div class="repeat-banner hidden" data-i18n="lesson.repeat" id="repeat-banner">🔁 أنت تعيد هذا الدرس — ستُحتسب ضمن التكرارات</div>
+<section class="panel" id="step-0">
+<h3 data-i18n="lesson.step1">1) شاهد وافهم</h3>
+<div id="vid-box"></div>
+<p class="en" id="vid-en"></p>
+<p class="ar" id="vid-ar"></p>
+<div class="timer" data-i18n="lesson.watching" id="watch-msg">المشاهدة الإلزامية جارية...</div>
+<button class="btn btn-primary" data-i18n="lesson.next" disabled="" id="btn-s0">التالي</button>
+</section>
+<section class="panel hidden" id="step-1">
+<h3 data-i18n="lesson.step2">2) استمع وسجّل</h3>
+<p class="en big" id="lis-en"></p>
+<p class="ar" id="lis-ar"></p>
+<div class="row">
+<button class="btn btn-sec" data-i18n="lesson.listen" id="btn-listen">🔊 استمع</button>
+<button class="btn btn-sec" data-i18n="lesson.recordVoice" id="btn-rec">🎤 سجّل صوتك</button>
+</div>
+<div class="wave-box" id="wave-box"></div>
+<p class="muted" id="rec-status"></p>
+<audio class="hidden" controls="" id="rec-play" style="width:100%;margin:8px 0"></audio>
+<p class="muted hidden" id="pron-feedback"></p>
+<button class="btn btn-primary" data-i18n="lesson.next" disabled="" id="btn-s1">التالي</button>
+</section>
+<section class="panel hidden" id="step-2">
+<h3 data-i18n="lesson.step3">3) تدرب</h3>
+<div id="prac"></div>
+<button class="btn btn-primary" data-i18n="lesson.nextDocs" id="btn-s2">التالي إلى المستندات</button>
+</section>
+<section class="panel hidden" id="step-3">
+<h3 data-i18n="lesson.step4">4) مستندات وملاحظات</h3>
+<div id="pdf-box"></div>
+<button class="btn btn-primary" data-i18n="lesson.nextQuiz" id="btn-s3">التالي إلى الاختبار</button>
+</section>
+<section class="panel hidden" id="step-4">
+<h3 data-i18n="lesson.step5">5) اختبار</h3>
+<p class="note" id="quiz-note"></p>
+<div class="timer" id="quiz-timer"></div>
+<div id="quiz-box"></div>
+<button class="btn btn-primary" data-i18n="lesson.submit" id="btn-submit">تسليم</button>
+<div class="res hidden" id="quiz-res"></div>
+</section>
+</main>
+</div>
+<div class="modal hidden" id="modal">
+<div class="modal-box">
+<div id="m-icon"></div>
+<h3 id="m-title"></h3>
+<p id="m-msg"></p>
+<button class="btn btn-primary" data-i18n="lesson.ok" id="m-ok">حسناً</button>
+</div>
+</div>
+<script src="js/i18n.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/certificate.js"></script>
+<script src="js/app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(console.warn));
+}
+</script>
+</body></html>
